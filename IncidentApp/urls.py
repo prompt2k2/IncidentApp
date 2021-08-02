@@ -19,5 +19,6 @@ from IMRegister import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.IncidentForm, name = 'IncidentView')
+    path('', views.IncidentForm, name = 'IncidentView'),
+    path('success/', views.Success, name = 'Success')
 ]

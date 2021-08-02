@@ -1,3 +1,5 @@
 from django.contrib import admin
+from .forms import IMRegisterForms
 
-# Register your models here.
+
+#admin.site.register(IMRegisterForms)
