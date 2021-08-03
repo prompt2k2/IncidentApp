@@ -13,33 +13,31 @@ def IncidentForm(request):
         form = IMRegisterForms(request.POST, request.FILES )
         
         if form.is_valid():
-            name = request.POST.get('name')
-            jobrole = request.POST.get('job_role')
-            incitype = request.POST.get('incident_type')
-            siteID = request.POST.get('siteID')
-            site_name = request.POST.get('site_name')
-            incident_date = request.POST.get('incident_date')
-            incident_time = request.POST.get('incident_time')
-            person_involved = request.POST.get('person_involved')
-            describe = request.POST.get('incident_description')
-            witness = request.POST.get('witness')
-            loss = request.POST.get('loss')
-            reported_to = request.POST.get('reported_to')
-            date_reported = request.POST.get('date_reported')
-            report_method = request.POST.get('report_method')            
-            actions = request.POST.get('actions')
-            #files = request.FILES('files')
-            fullmessage = str([name.upper(), 
-                               incitype, siteID, actions,
-                               jobrole, site_name, incident_date,
-                               incident_time, person_involved, 
-                               describe, witness, loss,
-                               reported_to, date_reported, report_method,
-                               
-                               ])
+            subject = request.POST.get('site_name')
+            body = {
+            'name' : request.POST.get('name'),
+            'jobrole': request.POST.get('job_role'),
+            'incitype' : request.POST.get('incident_type'),
+            'siteID' : request.POST.get('siteID'),
+            'site_name' : request.POST.get('site_name'),
+            'incident_date' : request.POST.get('incident_date'),
+            'incident_time' : request.POST.get('incident_time'),
+            'person_involved': request.POST.get('person_involved'),
+            'describe' : request.POST.get('incident_description'),
+            'witness' : request.POST.get('witness'),
+            'loss' : request.POST.get('loss'),
+            'reported_to': request.POST.get('reported_to'),
+            'date_reported' : request.POST.get('date_reported'),
+            'report_method' : request.POST.get('report_method') ,           
+            'actions': request.POST.get('actions'),
+            'files':request.FILES.get('files')
+            }
+            
+            fullmessage = "\n".join(f'{i}:{j}' for i,j in body.items())
+          
             
             try:
-                send_mail('New Incident Report',
+                send_mail(subject,
                           fullmessage,
                          
                       settings.EMAIL_HOST_USER,
