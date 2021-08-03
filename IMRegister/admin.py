@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .forms import IMRegisterForms
+from .models import Incident
 
 
-#admin.site.register(IMRegisterForms)
+admin.site.register(Incident)

@@ -1,28 +1,39 @@
-from django import forms
+from django.forms import ModelForm, Textarea,DateInput,ClearableFileInput, TimeInput, CheckboxSelectMultiple, NumberInput, TextInput, RadioSelect
+from .models import Incident
 
-office = [('Operations','Operations'),('OHSE','OHSE'), 
+INCIDENT_TYPES = [('Operations','Operations'),('OHSE','OHSE'), 
           ('Admin','Admin'),('IT','IT'), ('Security','Security')]
 
 RM = [('Text Messages','Text Messages'),('Phone Call','Phone Call'),('Email','Email'),('This form', 'This form')]
 
-class IMRegisterForms(forms.Form):
+class IMRegisterForms(ModelForm):
     
-    name = forms.CharField(label="Full Name", widget=forms.Textarea(attrs={'rows':3,'placeholder':'Name of person completing this form'}),max_length=80)
-    job_role = forms.CharField(label="Job Role", max_length=30)
-    incident_type= forms.MultipleChoiceField(label="Incident Type", required=True, widget=forms.CheckboxSelectMultiple, choices=office, )
-    siteID = forms.CharField(label="Site ID", max_length=6, required=False)
-    site_name = forms.CharField(label="Site (Location) Name", widget=forms.Textarea(attrs={'rows':3,'placeholder':'Indicate Site or Location of incident'}),max_length=50, required=False)
-    incident_date = forms.DateTimeField(label="Incident Date", widget=forms.DateInput(attrs={'type':'date'}))
-    #incident_time = forms.DateTimeField(label="Incident Time", required=False,widget=forms.DateInput(attrs={'type':'time'}))
-    person_involved = forms.CharField(label="Person(s) Involved", widget=forms.Textarea(attrs={'rows':3,'placeholder':'State Name, Contacts of person(s) involved in this incident (IF ANY)'}))
-    incident_description = forms.CharField(label="Incident Description", widget=forms.Textarea(attrs={'rows':5}))
-    witness = forms.CharField(label="Witness(es)", widget=forms.Textarea(attrs={'rows':3, 'placeholder':'Names and Contacts of those present during the incident (IF ANY)'}))
-    loss = forms.CharField(label="Item(s)/Material(s) Loss ", required=False, widget=forms.Textarea(attrs={'rows':4, 'placeholder':'List names and types of loss in this incident'}))
-    reported_to = forms.CharField(label="Reported To", max_length=80)
-    date_reported = forms.DateTimeField(label="Date Reported", widget=forms.DateInput(attrs={'type':'date'}))
-    report_method = forms.ChoiceField(label="Report Method", required=True, widget=forms.RadioSelect, choices=RM)
-    actions = forms.CharField(label="Action(s) Taken", required=False, widget=forms.Textarea(attrs={'rows':3, 'placeholder': 'Describe any action(s) taken'}))
+    class Meta:
+        model = Incident
+        fields = '__all__'
+        widgets = {
+            
+            'name' : Textarea(attrs={'rows':3,'placeholder':'Name of person completing this form'}),
+            'job_role' : TextInput (attrs={'placeholder':"Job Role"}),
+            'incident_type':CheckboxSelectMultiple (attrs={'placeholder':"Incident Type"}, choices=INCIDENT_TYPES),
+            'siteID' : TextInput(attrs={'placeholder':"Site ID"}),
+            'site_name' :Textarea(attrs={'rows':3,'placeholder':"Indicate Site or Location of incident"}),
+            'incident_date':DateInput (attrs={'type':'date'}),
+            'incident_time':TimeInput (attrs={'type':'time'}),
+            'person_involved' :Textarea( attrs={'rows':3,'placeholder':'State Name, Contacts of person(s) involved in this incident (IF ANY)'}),
+            'incident_description' :Textarea( attrs={'rows':5}),
+            'witness' :Textarea(attrs={'rows':3, 'placeholder':'Names and Contacts of those present during the incident (IF ANY)'}),
+            'loss' : Textarea (attrs={'rows':4, 'placeholder':'List names and types of loss in this incident'}),
+            'reported_to' : TextInput( ),
+            'date_reported' :DateInput(attrs={'type':'date'}),
+            'report_method'  :RadioSelect(choices=RM),
+            'actions' :Textarea(attrs={'rows':3, 'placeholder': 'Describe any action(s) taken'}),
+            'files' :ClearableFileInput(attrs={'multiple':True}),
+
+        }
+
     
     
-    def __str__(self):
-        return self.incident_type
+    
+        
+  

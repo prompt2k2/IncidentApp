@@ -16,9 +16,16 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from IMRegister import views
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+from django.conf.urls.static import static
+from django.conf import settings 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.IncidentForm, name = 'IncidentView'),
     path('success/', views.Success, name = 'Success')
+    
 ]
+
+urlpatterns += staticfiles_urlpatterns()
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
