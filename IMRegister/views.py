@@ -55,10 +55,12 @@ def IncidentForm(request):
     
     else:
         form = IMRegisterForms()
-    #context = {}
-    #context['form'] = IMRegisterForms()    
+   
     return render(request, 'IMRegister/incident.html', {'form':form})
     
 
 def Success(request):
      return render(request, 'IMRegister/success.html')
+ 
+def Frontend(request):
+     return render(request, 'IMRegister/mail.html')

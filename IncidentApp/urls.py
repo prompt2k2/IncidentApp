@@ -23,7 +23,8 @@ from django.conf import settings
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.IncidentForm, name = 'IncidentView'),
-    path('success/', views.Success, name = 'Success')
+    path('success/', views.Success, name = 'Success'),
+    path('frontend/', views.Frontend, name = 'mail')
     
 ]
 
