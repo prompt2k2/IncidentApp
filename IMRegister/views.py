@@ -58,24 +58,6 @@ def IncidentForm(request):
             print(form.errors)
     
     
-<<<<<<< HEAD
-def sendEmail(request):
-    
-    if request.method == 'POST':
-        form = IMRegisterForms(request.POST)
-        if form.is_valid():
-            subject = "Incident Report"
-            body = {form}
-            message = "\n".join(body.values())
-            
-            try:
-                send_mail(subject, message, 'prompt2k2@gmail.com', ['prompt2k2@gmail.com'])
-            except BadHeaderError:
-                return HttpResponse('Invalid Header Found')
-            
-    form = IMRegisterForms()
-    return render(request, 'IMRegister/incident.html', {'form':form})
-=======
     else:
         form = IMRegisterForms()
    
@@ -87,4 +69,3 @@ def Success(request):
  
 def Frontend(request):
      return render(request, 'IMRegister/mail.html')
->>>>>>> 723eed6bebf8dbf28f7ea64e18f524014561d32c
