@@ -28,11 +28,11 @@
                 <hr class="my-4"> 
                 {% block content %} 
                 <div class="container-sm pt-3 border bg bg-light justify-content-center">
-                    <form action = "" method = "post">
+                    <form action = "{% url 'IncidentView' %}" method = "POST" name = 'message' enctype="multipart/form-data">
                         {% csrf_token %}
                         
                         <div class="row pt-4 pb-4 border border-5">
-                        <h6 class="p-2 mb-2 bg-success text-white text-center"> PERSONAL INFORMATION </h6>
+                        <h6 class="p-2 mb-2 bg-success text-white text-center"> PERSONAL INFORMATION || {{incidentnumber}}</h6>
                             <div class="col-md-6">{{form.name|as_crispy_field}}</div>
                             <div class="col-md-4">{{form.job_role|as_crispy_field}}</div>
                             <div class="col-md-2 inline">{{form.incident_type|as_crispy_field}}</div>
@@ -44,6 +44,7 @@
                             <div class="col-md-4">{{form.site_name|as_crispy_field}}</div>
                             <div class="col-md-2">{{form.incident_date|as_crispy_field}}</div>
                             <div class="col-md-2">{{form.incident_time|as_crispy_field}}</div>
+   
                             
                         </div>
                        
@@ -54,13 +55,17 @@
                         </div>
                         <div class="row pt-4 pb-4 border border-5">
                         <h6 class="p-2 mb-2 bg-success text-white text-center"> REPORTING </h6>
-                            <div class="col-md-6">{{form.incident_description|as_crispy_field}}</div>
+                            <div class="col-md-5">{{form.incident_description|as_crispy_field}}</div>
+                          
                             <div class="col-md-2">{{form.loss|as_crispy_field}}</div>
                             <div class="col-md-2 border border-5">
                                 <div>{{form.reported_to|as_crispy_field}}</div>
                                 <div>{{form.date_reported|as_crispy_field}}</div>
                             </div>
-                            <div class="col-md-2">{{form.report_method|as_crispy_field}}</div>
+                            <div class="col-md-2">{{form.report_method|as_crispy_field}}
+                              <div>
+                                {{form.files}}
+                            </div></div>
                         </div>
                     
                         <div class="row pt-4 pb-4 border border-5">
