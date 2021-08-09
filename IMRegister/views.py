@@ -49,7 +49,7 @@ def IncidentForm(request):
             'Incident Report Method' : request.POST.get('report_method') ,           
             
             'Files Attached  ':request.FILES.get('files'),
-            'Lesson(s) Learned  ':request.FILES.get('lessons'),
+            'Lesson(s) Learned  ':request.POST.get('lessons'),
             }
             
             fullmessage = "\n".join(f'{i}:{j}' for i,j in body.items())
