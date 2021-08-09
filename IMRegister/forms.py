@@ -14,7 +14,7 @@ class IMRegisterForms(ModelForm):
         widgets = {
             
             'name' : Textarea(attrs={'rows':3,'placeholder':'Name of person completing this form'}),
-            'job_role' : TextInput (attrs={'placeholder':"Job Role"}),
+            'job_role' : TextInput (attrs={'placeholder':"e.g Site Engineer"}),
             'incident_type':CheckboxSelectMultiple (attrs={'placeholder':"Incident Type"}, choices=INCIDENT_TYPES),
             'siteID' : TextInput(attrs={'placeholder':"Site ID"}),
             'site_name' :Textarea(attrs={'rows':3,'placeholder':"Indicate Site or Location of incident"}),
@@ -27,8 +27,19 @@ class IMRegisterForms(ModelForm):
             'reported_to' : TextInput( ),
             'date_reported' :DateInput(attrs={'type':'date'}),
             'report_method'  :RadioSelect(choices=RM),
-            'actions' :Textarea(attrs={'rows':3, 'placeholder': 'Describe any action(s) taken'}),
+            'incident_area' :Textarea(attrs={'rows':3, 'placeholder': 'e.g DB, Generator area, etc'}),
             'files' :ClearableFileInput(attrs={'multiple':True}),
+            'incident_area_detail' : Textarea(attrs={'rows':3, 'placeholder':"Incident area within the premises"}),
+            'direct_cause' : Textarea(attrs={'rows':4,'placeholder':'State incident direct cause'}),
+            'root_cause' : Textarea(attrs={'rows':4,'placeholder':'State incident root cause'}),
+            'imme_action': Textarea(attrs={'rows':4,'placeholder':'Immediate action taken'}),
+            'imme_action_whom' : TextInput(attrs={'placeholder':'By Whom'}),
+            'imme_action_when' : DateInput(attrs={'type':'date'}),
+            'long_action' : Textarea(attrs={'rows':4,'placeholder':'Long term action(s) planned/actioned'}),
+            'long_action_whom' : TextInput(attrs={'placeholder':'By Whome'}),
+            'long_action_when' : DateInput(attrs={'type':'date'}),
+            'lessons': Textarea(attrs={'placeholder':'describe in details lesson(s) learned from this incident'}),
+            'lost_hr': NumberInput(attrs={'placeholder':'In minutes'})
 
         }
 
