@@ -1,14 +1,16 @@
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_protect
 from .forms import IMRegisterForms
-<<<<<<< HEAD
 from django.core.mail import send_mail, BadHeaderError
 from django.http import HttpResponse
-=======
 from django.http import HttpResponseRedirect, HttpResponse
 from django.core.mail import send_mail, BadHeaderError
 from django.conf import settings
->>>>>>> 723eed6bebf8dbf28f7ea64e18f524014561d32c
+from django.views.generic import View
+from .models import *
+from .render import Render
+from django.utils import timezone
+
 
 
 @csrf_protect
@@ -48,6 +50,7 @@ def IncidentForm(request):
                       settings.EMAIL_HOST_USER,
                       ['ppopoola@starsightenergy.com'],
                       fail_silently=False)
+                
             
                 form.save()
             except BadHeaderError:
@@ -56,8 +59,7 @@ def IncidentForm(request):
         
         else:
             print(form.errors)
-    
-    
+        
     else:
         form = IMRegisterForms()
    
@@ -68,4 +70,28 @@ def Success(request):
      return render(request, 'IMRegister/success.html')
  
 def Frontend(request):
-     return render(request, 'IMRegister/mail.html')
+    
+    incidentcount = Incident.objects.all().count
+    incident = Incident.objects.all()
+    #for item in incident:
+        
+        #type = item.siteID
+        #name = item.name
+        #place= item.site_name
+        #meth= item.report_method
+        
+       
+    return render(request, 'IMRegister/mail.html', {'incidentcount':incidentcount})
+ 
+
+''' 
+class Pdf(View):
+    
+    
+    def get(self, request):
+        incident = Incident.objects.all()
+        params = {'incident': incident,
+                  'request': request,}
+        
+        return Render.render('incidents.html', params)
+'''

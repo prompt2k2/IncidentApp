@@ -25,24 +25,11 @@
                     <h1 class="row-cols-10 display-4 text-center">Starsight Incident Management</h1>
                 </div>
                 <blockquote class="lead font-italic text-center">Please be concise </blockquote>
+                <a class="btn btn-danger" href="{% url 'IncidentView' %}">Incident Form </a>
                 <hr class="my-4"> 
                 {% block content %} 
-                    <p>{{name}}</p>
-                     <p>{{job_role}}</p>
-                      <p>{{incident_type}}</p>
-                     <p>{{siteID}}</p>
-                      <p>{{site_name}}</p>
-                     <p>{{incident_date}}</p>
-                      <p>{{incident_time}}</p>
-                     <p>{{person_involved}}</p>
-                      <p>{{incident_description}}</p>
-                     <p>{{witness}}</p>
-                      <p>{{loss}}</p>
-                     <p>{{reported_to}}</p>
-                      <p>{{date_reported}}</p>
-                     <p>{{report_method}}</p>
-                      <p>{{actions}}</p>
-                     <p>{{files}}</p>
+                    <p>Total Number of Incidents: {{incidentcount}}</p>
+                  
                      
             
 

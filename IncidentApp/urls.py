@@ -24,7 +24,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.IncidentForm, name = 'IncidentView'),
     path('success/', views.Success, name = 'Success'),
-    path('frontend/', views.Frontend, name = 'mail')
+    path('frontend/', views.Frontend, name = 'Report'),
+ 
     
 ]
 
