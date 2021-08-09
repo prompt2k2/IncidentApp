@@ -25,7 +25,7 @@ def IncidentForm(request):
             'Name  ' : request.POST.get('name'),
             'Job Role  ': request.POST.get('job_role'),
             'Incident Type  ' : request.POST.get('incident_type'),
-            'siteID  ' : request.POST.get('siteID'),
+            'siteID  ' : request.POST.get('siteID').upper(),
             'Site Name  ' : request.POST.get('site_name'),
             'Incident Area   ' : request.POST.get('incident_area'),
             'Incident Area Detail  ' : request.POST.get('incident_area_detail'),

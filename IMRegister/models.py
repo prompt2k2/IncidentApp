@@ -35,8 +35,11 @@ class Incident(models.Model):
     lessons = models.CharField(verbose_name='Lesson(s) learned from Incident',max_length=2220, null=True, blank=True)
     lost_hr = models.IntegerField(verbose_name='Lost Hour',null=True, blank=True)
     
+
+    
     def __str__(self):
         code = str(self.incidentnumber)
         return  code + "-"+ self.incident_type 
+    
     
     
