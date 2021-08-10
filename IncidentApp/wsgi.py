@@ -14,3 +14,5 @@ from django.core.wsgi import get_wsgi_application
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'IncidentApp.settings')
 
 application = get_wsgi_application()
+
+WEBSITE_PORT = 8000
