@@ -33,7 +33,7 @@ class Incident(models.Model):
     incident_description = models.CharField(verbose_name='Incident Description (Full Details)',max_length=2220)
     witness = models.CharField(verbose_name='Witness (if any)', max_length=220, null=True, blank=True)
     loss = models.CharField(verbose_name='Material/Equipment Loss (if any)',max_length=220, null=True, blank=True)
-    reported_to = models.CharField(verbose_name='Reported to (if it has been unofficially reported)', max_length=80, null=True, blank=True)
+    reported_to = models.CharField(verbose_name='Reported to:', max_length=80, null=True, blank=True)
     date_reported = models.DateTimeField(verbose_name='Report Date',null=True, blank=True)
     report_method = models.CharField(verbose_name='Report Method',null=True, blank=True, max_length=20, choices=RM)
     lessons = models.CharField(verbose_name='Lesson(s) learned from Incident',max_length=2220, null=True, blank=True)
