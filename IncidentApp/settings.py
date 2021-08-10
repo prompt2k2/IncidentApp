@@ -26,9 +26,9 @@ SECRET_KEY = 'django-insecure-(g-r*pd-kexylufz$*u2ghyijken@)s6d%5*mdzn-ui4u8vi!0
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-EMAIL_HOST = 'smtp.office365.com'
-EMAIL_HOST_USER = 'itsupport@starsightenergy.com'
-EMAIL_HOST_PASSWORD = 'Starsight@2021!'
+EMAIL_HOST = os.environ.get('EMAIL_HOST')
+EMAIL_HOST_USER = os.environ.get('HOST_EMAIL')
+EMAIL_HOST_PASSWORD = os.environ.get('HOST_PASS')
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
