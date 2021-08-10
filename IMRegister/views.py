@@ -2,7 +2,6 @@ from django.shortcuts import render
 from django.views.decorators.csrf import csrf_protect
 from .forms import IMRegisterForms
 from django.core.mail import send_mail, BadHeaderError
-from django.http import HttpResponse
 from django.http import HttpResponseRedirect, HttpResponse
 from django.core.mail import send_mail, BadHeaderError
 from django.conf import settings
@@ -11,6 +10,7 @@ from .models import *
 from .render import Render
 from django.utils import timezone
 from .resources import IncidentResource
+
 
 
 
@@ -90,9 +90,9 @@ def Frontend(request):
     return render(request, 'IMRegister/mail.html', {'incidentcount':incidentcount})
  
 
-def exportpdf(request):
+def exportfile(request):
     incident_resource = IncidentResource()
     dataset = incident_resource.export()
-    response = HttpResponse(dataset.pdf, content_type='application/pdf')
-    response['Content-Disposition'] = 'attachment; filename="Incident.pdf"'
+    response = HttpResponse(dataset.csv, content_type='text/csv')
+    response['Content-Disposition'] = 'attachment; filename="Incidents.csv"'
     return response
