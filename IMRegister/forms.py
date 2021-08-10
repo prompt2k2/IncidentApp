@@ -13,7 +13,7 @@ class IMRegisterForms(ModelForm):
         fields = '__all__'
         widgets = {
             
-            'name' : Textarea(attrs={'rows':3,'placeholder':'Name of person completing this form'}),
+            'name' : Textarea(attrs={'rows':1,'placeholder':'Name of person completing this form'}),
             'job_role' : TextInput (attrs={'placeholder':"e.g Site Engineer"}),
             'incident_type':CheckboxSelectMultiple (attrs={'placeholder':"Incident Type"}, choices=INCIDENT_TYPES),
             'siteID' : TextInput(attrs={'placeholder':"Site ID"}),

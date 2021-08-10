@@ -26,7 +26,7 @@ class Incident(models.Model):
     incident_time = models.TimeField(verbose_name='Incident Time', null=True, blank=True)
     files = models.FileField(verbose_name='Attach Pictures', null=True, blank=True)
     person_involved = models.CharField(verbose_name='Person(s) involved in Incident',max_length=220)
-    incident_description = models.CharField(verbose_name='Incident Description (Full Details',max_length=2220)
+    incident_description = models.CharField(verbose_name='Incident Description (Full Details)',max_length=2220)
     witness = models.CharField(verbose_name='Witness (if any)', max_length=220, null=True, blank=True)
     loss = models.CharField(verbose_name='Material/Equipment Loss (if any)',max_length=220, null=True, blank=True)
     reported_to = models.CharField(verbose_name='Reported to (if it has been unofficially reported)', max_length=80, null=True, blank=True)

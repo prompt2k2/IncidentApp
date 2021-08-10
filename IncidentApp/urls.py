@@ -25,6 +25,7 @@ urlpatterns = [
     path('', views.IncidentForm, name = 'IncidentView'),
     path('success/', views.Success, name = 'Success'),
     path('frontend/', views.Frontend, name = 'Report'),
+    path('pdf/', views.exportpdf, name='exportpdf'),
  
     
 ]

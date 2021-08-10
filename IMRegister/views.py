@@ -10,6 +10,7 @@ from django.views.generic import View
 from .models import *
 from .render import Render
 from django.utils import timezone
+from .resources import IncidentResource
 
 
 
@@ -85,25 +86,13 @@ def Frontend(request):
     
     incidentcount = Incident.objects.all().count
     incident = Incident.objects.all()
-    #for item in incident:
-        
-        #type = item.siteID
-        #name = item.name
-        #place= item.site_name
-        #meth= item.report_method
-        
        
     return render(request, 'IMRegister/mail.html', {'incidentcount':incidentcount})
  
 
-''' 
-class Pdf(View):
-    
-    
-    def get(self, request):
-        incident = Incident.objects.all()
-        params = {'incident': incident,
-                  'request': request,}
-        
-        return Render.render('incidents.html', params)
-'''
+def exportpdf(request):
+    incident_resource = IncidentResource()
+    dataset = incident_resource.export()
+    response = HttpResponse(dataset.pdf, content_type='application/pdf')
+    response['Content-Disposition'] = 'attachment; filename="Incident.pdf"'
+    return response
