@@ -41,12 +41,14 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'IMRegister',
     'crispy_forms',
+    'import_export',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    
 ]
 
 MIDDLEWARE = [

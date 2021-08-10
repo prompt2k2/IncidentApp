@@ -1,15 +1,19 @@
 from django.db import models
 from django.forms import ModelForm
 
+INCIDENT_TYPES = [('Operations','Operations'),('OHSE','OHSE'), 
+          ('Admin','Admin'),('IT','IT'), ('Security','Security')]
 
-# Create your models here.
+RM = [('Text Messages','Text Messages'),('Phone Call','Phone Call'),('Email','Email'),('This form', 'This form')]
+
+
 
 class Incident(models.Model):
     
     incidentnumber = models.AutoField(primary_key=True)
     name = models.CharField(verbose_name='Name (Surname First)', max_length=150)
     job_role = models.CharField(verbose_name='Job Role', max_length=90)
-    incident_type= models.CharField(verbose_name='Incident Type', max_length=200)
+    incident_type= models.CharField(verbose_name='Incident Type', max_length=200, choices=INCIDENT_TYPES)
     siteID = models.CharField(max_length=6, null=True, blank=True)
     site_name = models.CharField(verbose_name='Site (Incident Location) Name',max_length=50)
     incident_area = models.CharField(verbose_name='Incident Area', max_length=50, null=True, blank=True)
@@ -26,12 +30,12 @@ class Incident(models.Model):
     incident_time = models.TimeField(verbose_name='Incident Time', null=True, blank=True)
     files = models.FileField(verbose_name='Attach Pictures', null=True, blank=True)
     person_involved = models.CharField(verbose_name='Person(s) involved in Incident',max_length=220)
-    incident_description = models.CharField(verbose_name='Incident Description (Full Details',max_length=2220)
+    incident_description = models.CharField(verbose_name='Incident Description (Full Details)',max_length=2220)
     witness = models.CharField(verbose_name='Witness (if any)', max_length=220, null=True, blank=True)
     loss = models.CharField(verbose_name='Material/Equipment Loss (if any)',max_length=220, null=True, blank=True)
-    reported_to = models.CharField(verbose_name='Reported to (if it has been unofficially reported)', max_length=80, null=True, blank=True)
+    reported_to = models.CharField(verbose_name='Reported to:', max_length=80, null=True, blank=True)
     date_reported = models.DateTimeField(verbose_name='Report Date',null=True, blank=True)
-    report_method = models.CharField(verbose_name='Report Method',null=True, blank=True, max_length=20)
+    report_method = models.CharField(verbose_name='Report Method',null=True, blank=True, max_length=20, choices=RM)
     lessons = models.CharField(verbose_name='Lesson(s) learned from Incident',max_length=2220, null=True, blank=True)
     lost_hr = models.IntegerField(verbose_name='Lost Hour',null=True, blank=True)
     

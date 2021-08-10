@@ -17,8 +17,8 @@
 
 <body>
 
-    <div class="container-fluid">
-        <div class="col-md-10 offset-md-1 mt-25">
+    <div class="container">
+        <div class="col-md-10 offset-md-1 mt-10">
             <div class="jumbotron">
                 <div class="col-md-12">
                     <img class="row-cols-2" src="{% static "images/SSlogo.png" %}" width=60>
@@ -28,39 +28,39 @@
                 <a class="btn btn-danger" href="{% url 'Report' %}">Report </a>
                 <hr class="my-4"> 
                 {% block content %} 
-                <div class="container-sm pt-3 border bg bg-light justify-content-center">
+                <div class="d-flex p-2 bd-highlight shadow-lg p-3 mb-5 bg-body rounded justify-content-center">
                     <form action = "{% url 'IncidentView' %}" method = "POST" name = 'message' enctype="multipart/form-data">
                         {% csrf_token %}
                         
-                        <div class="row pt-4 pb-4 border border-5">
-                        <h6 class="p-2 mb-2 bg-success text-white text-center"> PERSONAL INFORMATION || {{incidentnumber}}</h6>
+                        <div class="row pt-4 pb-4 ">
+                            <h6 class="p-2 mb-2 bg-success text-white text-center"> PERSONAL INFORMATION || {{incidentnumber}}</h6>
                             <div class="col-md-6">{{form.name|as_crispy_field}}</div>
-                            <div class="col-md-4">{{form.job_role|as_crispy_field}}</div>
-                            <div class="col-md-2">{{form.incident_type|as_crispy_field}} (Multiple selection applies)</div>
+                            <div class="col-md-5">{{form.job_role|as_crispy_field}}</div>
+                            
                             
                         </div>
-                        <div class="row pt-4 pb-4 border border-5">
+                        <div class="row pt-4 pb-4 ">
                             <h6 class="p-2 mb-2 bg-success text-white text-center"> INCIDENT </h6>
                             <div class="col-md-2">{{form.siteID|as_crispy_field}}</div>
                             <div class="col-md-4">{{form.site_name|as_crispy_field}}</div>
-                            <div class="col-md-2">{{form.incident_date|as_crispy_field}}</div>
-                            <div class="col-md-2">{{form.incident_time|as_crispy_field}}</div>
+                            <div class="col-md-3">{{form.incident_date|as_crispy_field}}{{form.incident_type|as_crispy_field}}</div>
+                            <div class="col-md-3">{{form.incident_time|as_crispy_field}}<hr><div>{{form.files}} </div></div>
    
                             
                         </div>
                        
-                        <div class="row pt-4 pb-4 border border-5">
+                        <div class="row pt-4 pb-4 ">
                             <div class="col-md-6">{{form.person_involved|as_crispy_field}}</div>
-                            <div class="col-md-4">{{form.witness|as_crispy_field}}</div>
+                            <div class="col-md-6">{{form.witness|as_crispy_field}}</div>
                             
                         </div>
-                        <div class="row pt-4 pb-4 border border-5">
+                        <div class="row pt-4 pb-4 ">
                         <h6 class="p-2 mb-2 bg-success text-white text-center"> REPORTING </h6>
-                            <div class="col-md-4">{{form.incident_area|as_crispy_field}}</div>
+                            <div class="col-md-6">{{form.incident_area|as_crispy_field}}</div>
                             <div class="col-md-6">{{form.incident_area_detail|as_crispy_field}}</div>
-                            <div class="col-md-5">{{form.direct_cause|as_crispy_field}}</div>
-                            <div class="col-md-5">{{form.root_cause|as_crispy_field}}</div>
-                            <div class="col-md-5 pt-4 pb-4 border border-5">
+                            <div class="col-md-6">{{form.direct_cause|as_crispy_field}}</div>
+                            <div class="col-md-6">{{form.root_cause|as_crispy_field}}</div>
+                            <div class="col-md-6 pt-4 pb-4 ">
                             <h6 class="p-2 mb-2 bg-success text-white text-center"> Immediate Action</h6>
                                 <div class="row-md-5">{{form.imme_action|as_crispy_field}}</div>
                                 <div class="row">
@@ -68,7 +68,7 @@
                                     <div class="col-md-5">{{form.imme_action_when|as_crispy_field}}</div>
                                 </div>
                             </div>
-                            <div class="col-md-5 pt-4 pb-4 border border-5">
+                            <div class="col-md-6 pt-4 pb-4 ">
                             <h6 class="p-2 mb-2 bg-success text-white text-center"> Long Term Action</h6>
                                 <div class="row-md-5">{{form.long_action|as_crispy_field}}</div>
                                 <div class="row">
@@ -78,23 +78,20 @@
                             </div>    
                                 
                                                       
-                            <div class="col-md-4">{{form.incident_description|as_crispy_field}}</div>
+                            <div class="col-md-5">{{form.incident_description|as_crispy_field}}</div>
                           
-                            <div class="col-md-2">{{form.loss|as_crispy_field}}</div>
-                            <div class="col-md-2 border border-5">
+                            <div class="col-md-3">{{form.loss|as_crispy_field}}</div>
+                            <div class="col-md-2 ">
                                     <div>{{form.reported_to|as_crispy_field}}</div>
                                     <div>{{form.date_reported|as_crispy_field}}</div>
                             </div>
-                            <div class="col-md-2">{{form.report_method|as_crispy_field}} </div>
-                            <div class="col-md-2 border border-5">
-                                <div>{{form.lost_hr|as_crispy_field}}</div>
-                                <hr>
-                                <div>{{form.files}} </div>
-                            </div>    
+                            <div class="col-md-2">{{form.report_method|as_crispy_field}}<hr>{{form.lost_hr|as_crispy_field}}</div>
+                           
+                              
                             
                         </div>
                     
-                        <div class="row pt-4 pb-4 border border-5">
+                        <div class="row pt-4 pb-4 ">
                         <h6 class="p-2 mb-2 bg-success text-white text-center"> FOLLOW-UP ACTION </h6>
                             <div class="col-md-12">{{form.lessons|as_crispy_field}}</div>
                             

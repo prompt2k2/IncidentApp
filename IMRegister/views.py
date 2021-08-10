@@ -2,7 +2,6 @@ from django.shortcuts import render
 from django.views.decorators.csrf import csrf_protect
 from .forms import IMRegisterForms
 from django.core.mail import send_mail, BadHeaderError
-from django.http import HttpResponse
 from django.http import HttpResponseRedirect, HttpResponse
 from django.core.mail import send_mail, BadHeaderError
 from django.conf import settings
@@ -10,6 +9,9 @@ from django.views.generic import View
 from .models import *
 from .render import Render
 from django.utils import timezone
+from .resources import IncidentResource
+from django.db.models import Sum
+
 
 
 
@@ -85,25 +87,15 @@ def Frontend(request):
     
     incidentcount = Incident.objects.all().count
     incident = Incident.objects.all()
-    #for item in incident:
-        
-        #type = item.siteID
-        #name = item.name
-        #place= item.site_name
-        #meth= item.report_method
-        
-       
-    return render(request, 'IMRegister/mail.html', {'incidentcount':incidentcount})
+    losthours = Incident.objects.all().aggregate(Sum('lost_hr'))['lost_hr__sum']
+    context = {'incidentcount': incidentcount,
+               'losthours':losthours}  
+    return render(request, 'IMRegister/mail.html', context)
  
 
-''' 
-class Pdf(View):
-    
-    
-    def get(self, request):
-        incident = Incident.objects.all()
-        params = {'incident': incident,
-                  'request': request,}
-        
-        return Render.render('incidents.html', params)
-'''
+def exportfile(request):
+    incident_resource = IncidentResource()
+    dataset = incident_resource.export()
+    response = HttpResponse(dataset.csv, content_type='text/csv')
+    response['Content-Disposition'] = 'attachment; filename="Incidents.csv"'
+    return response
