@@ -32,7 +32,7 @@ class IMRegisterForms(ModelForm):
             'long_action' : Textarea(attrs={'rows':4,'placeholder':'Long term action(s) planned/actioned'}),
             'long_action_whom' : TextInput(attrs={'placeholder':'By Whome'}),
             'long_action_when' : DateInput(attrs={'type':'date'}),
-            'lessons': Textarea(attrs={'placeholder':'describe in details lesson(s) learned from this incident'}),
+            'lessons': Textarea(attrs={'rows':3, 'placeholder':'describe in details lesson(s) learned from this incident'}),
             'lost_hr': NumberInput(attrs={'placeholder':'In minutes'})
 
         }
