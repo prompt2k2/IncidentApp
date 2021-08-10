@@ -10,6 +10,7 @@ from .models import *
 from .render import Render
 from django.utils import timezone
 from .resources import IncidentResource
+from django.db.models import Sum
 
 
 
@@ -86,8 +87,10 @@ def Frontend(request):
     
     incidentcount = Incident.objects.all().count
     incident = Incident.objects.all()
-       
-    return render(request, 'IMRegister/mail.html', {'incidentcount':incidentcount})
+    losthours = Incident.objects.all().aggregate(Sum('lost_hr'))['lost_hr__sum']
+    context = {'incidentcount': incidentcount,
+               'losthours':losthours}  
+    return render(request, 'IMRegister/mail.html', context)
  
 
 def exportfile(request):

@@ -36,7 +36,7 @@
                         <h6 class="p-2 mb-2 bg-success text-white text-center"> PERSONAL INFORMATION || {{incidentnumber}}</h6>
                             <div class="col-md-6">{{form.name|as_crispy_field}}</div>
                             <div class="col-md-4">{{form.job_role|as_crispy_field}}</div>
-                            <div class="col-md-2">{{form.incident_type|as_crispy_field}} (Multiple selection applies)</div>
+                            <div class="col-md-2">{{form.incident_type|as_crispy_field}} click to select</div>
                             
                         </div>
                         <div class="row pt-4 pb-4 border border-5">
@@ -85,7 +85,7 @@
                                     <div>{{form.reported_to|as_crispy_field}}</div>
                                     <div>{{form.date_reported|as_crispy_field}}</div>
                             </div>
-                            <div class="col-md-2">{{form.report_method|as_crispy_field}} </div>
+                            <div class="col-md-2">{{form.report_method|as_crispy_field}} click to select</div>
                             <div class="col-md-2 border border-5">
                                 <div>{{form.lost_hr|as_crispy_field}}</div>
                                 <hr>

@@ -1,10 +1,6 @@
 from django.forms import ModelForm, Textarea,DateInput,ClearableFileInput, TimeInput, CheckboxSelectMultiple, NumberInput, TextInput, RadioSelect
 from .models import Incident
 
-INCIDENT_TYPES = [('Operations','Operations'),('OHSE','OHSE'), 
-          ('Admin','Admin'),('IT','IT'), ('Security','Security')]
-
-RM = [('Text Messages','Text Messages'),('Phone Call','Phone Call'),('Email','Email'),('This form', 'This form')]
 
 class IMRegisterForms(ModelForm):
     
@@ -15,7 +11,6 @@ class IMRegisterForms(ModelForm):
             
             'name' : Textarea(attrs={'rows':1,'placeholder':'Name of person completing this form'}),
             'job_role' : TextInput (attrs={'placeholder':"e.g Site Engineer"}),
-            'incident_type':CheckboxSelectMultiple (attrs={'placeholder':"Incident Type"}, choices=INCIDENT_TYPES),
             'siteID' : TextInput(attrs={'placeholder':"Site ID"}),
             'site_name' :Textarea(attrs={'rows':3,'placeholder':"Indicate Site or Location of incident"}),
             'incident_date':DateInput (attrs={'type':'date'}),
@@ -26,7 +21,6 @@ class IMRegisterForms(ModelForm):
             'loss' : Textarea (attrs={'rows':4, 'placeholder':'List names and types of loss in this incident'}),
             'reported_to' : TextInput( ),
             'date_reported' :DateInput(attrs={'type':'date'}),
-            'report_method'  :RadioSelect(choices=RM),
             'incident_area' :Textarea(attrs={'rows':3, 'placeholder': 'e.g DB, Generator area, etc'}),
             'files' :ClearableFileInput(attrs={'multiple':True}),
             'incident_area_detail' : Textarea(attrs={'rows':3, 'placeholder':"Incident area within the premises"}),
@@ -42,6 +36,11 @@ class IMRegisterForms(ModelForm):
             'lost_hr': NumberInput(attrs={'placeholder':'In minutes'})
 
         }
+        
+        def __init__(self, *args, **kwargs):
+            super(IMRegisterForms, self).__init__(*args, **kwargs)
+            self.fields['report_method'].empty_label='Select'
+            self.fields['incident_type'].empty_label='Select'
 
     
     
