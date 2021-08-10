@@ -33,7 +33,7 @@
                         {% csrf_token %}
                         
                         <div class="row pt-4 pb-4 ">
-                            <h6 class="p-2 mb-2 bg-success text-white text-center"> PERSONAL INFORMATION || {{incidentnumber}}</h6>
+                            <h6 class="p-2 mb-2 bg-success text-white text-center"> PERSONAL INFORMATION {{form.incidentnumber}}</h6>
                             <div class="col-md-6">{{form.name|as_crispy_field}}</div>
                             <div class="col-md-5">{{form.job_role|as_crispy_field}}</div>
                             
@@ -44,7 +44,7 @@
                             <div class="col-md-2">{{form.siteID|as_crispy_field}}</div>
                             <div class="col-md-4">{{form.site_name|as_crispy_field}}</div>
                             <div class="col-md-3">{{form.incident_date|as_crispy_field}}{{form.incident_type|as_crispy_field}}</div>
-                            <div class="col-md-3">{{form.incident_time|as_crispy_field}}<hr><div>{{form.files}} </div></div>
+                            <div class="col-md-3">{{form.incident_time|as_crispy_field}}<hr><div>{{form.files}} Attach pictures </div></div>
    
                             
                         </div>
