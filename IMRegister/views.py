@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_protect
 from .forms import IMRegisterForms
-from django.core.mail import send_mail, BadHeaderError
+from django.core.mail import send_mail, send_mass_mail, BadHeaderError
 from django.http import HttpResponseRedirect, HttpResponse
 from django.core.mail import send_mail, BadHeaderError
 from django.conf import settings
@@ -11,6 +11,7 @@ from .render import Render
 from django.utils import timezone
 from .resources import IncidentResource
 from django.db.models import Sum
+from Managers.models import ManagerModel
 
 
 
@@ -23,6 +24,7 @@ def IncidentForm(request):
         
         if form.is_valid():
             subject = request.POST.get('site_name')
+            cc_email = request.POST.get('manager')
             body = {
             'Name  ' : request.POST.get('name'),
             'Job Role  ': request.POST.get('job_role'),
@@ -55,7 +57,7 @@ def IncidentForm(request):
             }
             
             fullmessage = "\n".join(f'{i}:{j}' for i,j in body.items())
-          
+            
             
             try:
                 send_mail(subject,
@@ -65,8 +67,9 @@ def IncidentForm(request):
                       ['ppopoola@starsightenergy.com'],
                       fail_silently=False)
                 
-            
+                print (cc_email)
                 form.save()
+                
             except BadHeaderError:
                 return HttpResponse("Invalid Header found")
             return HttpResponseRedirect("/success/")

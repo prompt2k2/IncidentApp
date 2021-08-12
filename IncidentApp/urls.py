@@ -14,11 +14,12 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from IMRegister import views
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.conf.urls.static import static
 from django.conf import settings 
+from Managers import views as as_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -26,6 +27,8 @@ urlpatterns = [
     path('success/', views.Success, name = 'Success'),
     path('frontend/', views.Frontend, name = 'Report'),
     path('download/', views.exportfile, name='exportfile'),
+    path('manager/', as_views.ManagerVForm, name='ManagerVForm'),
+    path('mlist/', as_views.ManagerList, name='ManagerList')
  
     
 ]

@@ -22,10 +22,11 @@
             <div class="jumbotron">
                 <div class="col-md-12">
                     <img class="row-cols-2" src="{% static "images/SSlogo.png" %}" width=60>
-                    <h1 class="row-cols-10 display-4 text-center">Starsight Incident Management</h1>
+                    <h1 class="row-cols-10 display-4 text-center">Starsight Incident Report Form</h1>
                 </div>
                 <blockquote class="lead font-italic text-center">Please be concise </blockquote>
-                <a class="btn btn-danger" href="{% url 'Report' %}">Report </a>
+                <a class="btn btn-primary" href="{% url 'Report' %}">Report </a>
+                <a class="btn btn-success" href="{% url 'ManagerVForm' %}">Create Manager </a>
                 <hr class="my-4"> 
                 {% block content %} 
                 <div class="d-flex p-2 bd-highlight shadow-lg p-3 mb-5 bg-body rounded justify-content-center">
@@ -35,13 +36,13 @@
                         <div class="row pt-4 pb-4 ">
                             <h6 class="p-2 mb-2 bg-success text-white text-center"> PERSONAL INFORMATION {{form.incidentnumber}}</h6>
                             <div class="col-md-6">{{form.name|as_crispy_field}}</div>
-                            <div class="col-md-5">{{form.job_role|as_crispy_field}}</div>
+                            <div class="col-md-5">{{form.job_role|as_crispy_field}}{{form.mgremail}}</div>
                             
                             
                         </div>
                         <div class="row pt-4 pb-4 ">
                             <h6 class="p-2 mb-2 bg-success text-white text-center"> INCIDENT </h6>
-                            <div class="col-md-2">{{form.siteID|as_crispy_field}}</div>
+                            <div class="col-md-2">{{form.siteID|as_crispy_field}}{{form.manager|as_crispy_field}}</div>
                             <div class="col-md-4">{{form.site_name|as_crispy_field}}</div>
                             <div class="col-md-3">{{form.incident_date|as_crispy_field}}{{form.incident_type|as_crispy_field}}</div>
                             <div class="col-md-3">{{form.incident_time|as_crispy_field}}<hr><div>{{form.files}} Attach pictures </div></div>
