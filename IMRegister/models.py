@@ -39,8 +39,9 @@ class Incident(models.Model):
     report_method = models.CharField(verbose_name='Report Method',null=True, blank=True, max_length=20, choices=RM)
     lessons = models.CharField(verbose_name='Lesson(s) learned from Incident',max_length=2220, null=True, blank=True)
     lost_hr = models.IntegerField(verbose_name='Lost Hour',null=True, blank=True)
-    manager = models.ForeignKey(ManagerModel, on_delete=models.DO_NOTHING, verbose_name='Manager')
+    manager = models.ForeignKey(ManagerModel, verbose_name='Manager', on_delete=models.DO_NOTHING, blank=False, max_length=30)
     
+
     
     def __str__(self):
         code = str(self.incidentnumber)

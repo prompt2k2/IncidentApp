@@ -24,7 +24,12 @@ def IncidentForm(request):
         
         if form.is_valid():
             subject = request.POST.get('site_name')
-            cc_email = request.POST.get('manager')
+            
+            
+            for e in ManagerModel.objects.all(): #Checks for email in the Manager Model
+                cc_email = (e.email)
+            
+            
             body = {
             'Name  ' : request.POST.get('name'),
             'Job Role  ': request.POST.get('job_role'),
@@ -64,10 +69,11 @@ def IncidentForm(request):
                           fullmessage,
                          
                       settings.EMAIL_HOST_USER,
-                      ['ppopoola@starsightenergy.com'],
+                      ['ppopoola@starsightenergy.com', cc_email],
                       fail_silently=False)
                 
                 print (cc_email)
+               
                 form.save()
                 
             except BadHeaderError:
