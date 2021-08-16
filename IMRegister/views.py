@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_protect
 from .forms import IMRegisterForms
-from django.core.mail import send_mail, BadHeaderError
+from django.core.mail import send_mail, send_mass_mail, BadHeaderError
 from django.http import HttpResponseRedirect, HttpResponse
 from django.core.mail import send_mail, BadHeaderError
 from django.conf import settings
@@ -11,6 +11,7 @@ from .render import Render
 from django.utils import timezone
 from .resources import IncidentResource
 from django.db.models import Sum
+from Managers.models import ManagerModel
 
 
 
@@ -23,6 +24,15 @@ def IncidentForm(request):
         
         if form.is_valid():
             subject = request.POST.get('site_name')
+            managername = request.POST.get('manager') #this gets the key of the manager selected from the manager table.
+            
+            
+            for e in ManagerModel.objects.filter(id = managername): #Filters whatever the manager id is, and returns the email.
+                
+                cc_mail = e.email
+              
+            
+            
             body = {
             'Name  ' : request.POST.get('name'),
             'Job Role  ': request.POST.get('job_role'),
@@ -55,18 +65,19 @@ def IncidentForm(request):
             }
             
             fullmessage = "\n".join(f'{i}:{j}' for i,j in body.items())
-          
+            
+            
             
             try:
                 send_mail(subject,
                           fullmessage,
                          
                       settings.EMAIL_HOST_USER,
-                      ['ppopoola@starsightenergy.com'],
+                      ['ppopoola@starsightenergy.com', cc_mail],
                       fail_silently=False)
-                
-            
+                               
                 form.save()
+                
             except BadHeaderError:
                 return HttpResponse("Invalid Header found")
             return HttpResponseRedirect("/success/")
