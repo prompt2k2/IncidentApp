@@ -27,7 +27,7 @@ SECRET_KEY = ['SECRET_KEY']
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-EMAIL_HOST = os.environ['EMAIL_HOST']
+EMAIL_HOST = 'smtp.office365.com'
 EMAIL_HOST_USER = os.environ['EMAIL_HOST_USER']
 EMAIL_HOST_PASSWORD = os.environ['HOST_PASS']
 EMAIL_PORT = 587
