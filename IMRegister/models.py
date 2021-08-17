@@ -15,7 +15,7 @@ class Incident(models.Model):
     name = models.CharField(verbose_name='Name (Surname First)', max_length=150)
     job_role = models.CharField(verbose_name='Job Role', max_length=90)
     incident_type= models.CharField(verbose_name='Incident Type', max_length=200, choices=INCIDENT_TYPES)
-    siteID = models.CharField(max_length=6, null=True, blank=True)
+    SiteID = models.CharField(verbose_name='Site ID', max_length=6, null=True, blank=True)
     site_name = models.CharField(verbose_name='Site (Incident Location) Name',max_length=50)
     incident_area = models.CharField(verbose_name='Incident Area', max_length=50, null=True, blank=True)
     incident_area_detail = models.CharField(verbose_name='Incident Area description', max_length=250, null=True, blank=True)
@@ -27,6 +27,14 @@ class Incident(models.Model):
     long_action = models.CharField(verbose_name='Long term action taken', max_length=600, null=True, blank=True)
     long_action_whom = models.CharField(verbose_name='By whom',max_length=60, null=True, blank=True)
     long_action_when = models.DateTimeField(verbose_name='When', null=True, blank=True)
+    
+    imme_action2 = models.CharField(verbose_name='Second Immediate action taken',max_length=200, null=True, blank=True)
+    imme_action2_whom = models.CharField(verbose_name='By whom', max_length=60, null=True, blank=True)
+    imme_action2_when = models.DateTimeField(verbose_name='When',null=True, blank=True)
+    long_action2 = models.CharField(verbose_name='Second Long term action taken', max_length=600, null=True, blank=True)
+    long_action2_whom = models.CharField(verbose_name='By whom',max_length=60, null=True, blank=True)
+    long_action2_when = models.DateTimeField(verbose_name='When', null=True, blank=True)
+    
     incident_date = models.DateTimeField(verbose_name='Incident Date', null=True, blank=True)
     incident_time = models.TimeField(verbose_name='Incident Time', null=True, blank=True)
     files = models.FileField(verbose_name='Attach Pictures', null=True, blank=True)
