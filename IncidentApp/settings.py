@@ -83,6 +83,8 @@ TEMPLATES = [
     },
 ]
 
+
+
 WSGI_APPLICATION = 'IncidentApp.wsgi.application'
 
 
@@ -96,6 +98,9 @@ DATABASES = {
     }
 }
 
+SESSION_COOKIE_SECURE = True
+SECURE_HSTS_SECONDS = 3600
+CSRF_COOKIE_SECURE = True
 
 
 # Password validation
