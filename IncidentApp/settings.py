@@ -26,13 +26,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-<<<<<<< HEAD
 SECRET_KEY = os.environ['SECRET_KEY']
 #SECRET_KEY = '-(<>?":}{43598736nkfeevnjnevf,egriuiuwrnrgwggwhiwhgihw,wgrwhguwrhuuhuwfwunuf3rihfi[3hgrw[wu+_)(*&^%$#@!|!!~~S-gbogbo-wa-la-ma-je-breakfast-ki-olorun-maa-so-wa-@-1922)s6d%5*mdzn-ui4u8vi!0'
-=======
-SECRET_KEY = ['SECRET_KEY']
-
->>>>>>> 56cc7a02b4e90eafeb38857e3404ff0a6f1ed87f
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
@@ -45,15 +40,6 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
 ALLOWED_HOSTS = ['*']
 
-<<<<<<< HEAD
-=======
-CSRF_COOKIE_SECURE = True
-SESSION_COOKIE_SECURE = True
-#SECURE_SSL_REDIRECT = True
-#SECURE_HSTS_SECONDS = 3600
-#SECURE_HSTS_INCLUDE_SUBDOMAINS = True
-#SECURE_HSTS_PRELOAD = True
->>>>>>> 56cc7a02b4e90eafeb38857e3404ff0a6f1ed87f
 # Application definition
 
 INSTALLED_APPS = [
@@ -81,11 +67,6 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-<<<<<<< HEAD
-=======
-
-
->>>>>>> 56cc7a02b4e90eafeb38857e3404ff0a6f1ed87f
 ROOT_URLCONF = 'IncidentApp.urls'
 
 TEMPLATES = [
