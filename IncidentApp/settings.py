@@ -101,7 +101,7 @@ DATABASES = {
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'eagle-eye-db',
+        'NAME': 'IncidentApp',
         'USER': 'DB_USERNAME',
         'PASSWORD': 'DB_PASSWORD',
         'HOST': 'DB_HOST',
