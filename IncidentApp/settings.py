@@ -104,7 +104,7 @@ DATABASES = {
         'NAME': 'incident_app',
         'USER': 'DB_USERNAME',
         'PASSWORD': 'DB_PASSWORD',
-        'HOST': 'DB_HOST',
+        'HOST': 'eagle-eye-db.mysql.database.azure.com',
         'PORT': '3306',
         
     }
