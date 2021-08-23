@@ -90,14 +90,25 @@ WSGI_APPLICATION = 'IncidentApp.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
-
+'''
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-
+'''
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'eagle-eye-db',
+        'USER': 'DB_USERNAME',
+        'PASSWORD': 'DB_PASSWORD',
+        'HOST': 'DB_HOST',
+        'PORT': '3306',
+        
+    }
+}
 SESSION_COOKIE_SECURE = True
 SECURE_HSTS_SECONDS = 3600
 CSRF_COOKIE_SECURE = True
