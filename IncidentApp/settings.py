@@ -102,8 +102,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'incident_app',
-        'USER': 'DB_USERNAME',
-        'PASSWORD': 'DB_PASSWORD',
+        'USER': os.environ['DB_USERNAME'],
+        'PASSWORD': os.environ['DB_PASSWORD'],
         'HOST': 'eagle-eye-db.mysql.database.azure.com',
         'PORT': '3306',
         
