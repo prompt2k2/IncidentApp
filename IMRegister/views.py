@@ -82,7 +82,7 @@ def IncidentForm(request):
                           fullmessage,
                          
                       settings.EMAIL_HOST_USER,
-                      ['ppopoola@starsightenergy.com', cc_mail],
+                      ['customerservice@starsightenergy.com', cc_mail],
                       fail_silently=False)
                                
                 form.save()
