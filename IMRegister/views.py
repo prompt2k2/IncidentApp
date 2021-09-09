@@ -34,42 +34,42 @@ def IncidentForm(request):
             
             
             body = {
-            'Name  ' : request.POST.get('name'),
-            'Job Role  ': request.POST.get('job_role'),
-            'Incident Type  ' : request.POST.get('incident_type'),
-            'SiteID  ' : request.POST.get('SiteID').upper(),
-            'Site Name  ' : request.POST.get('site_name'),
-            'Incident Area   ' : request.POST.get('incident_area'),
-            'Incident Area Detail  ' : request.POST.get('incident_area_detail'),
-            'Direct Cause  ' : request.POST.get('direct_cause'),
-            'Root Cause  ' : request.POST.get('root_cause'),
+            'Name  ' : request.POST.get('name'), "\n"
+            'Job Role  ': request.POST.get('job_role'), "\n"
+            'Incident Type  ' : request.POST.get('incident_type'), "\n"
+            'SiteID  ' : request.POST.get('SiteID').upper(), "\n"
+            'Site Name  ' : request.POST.get('site_name'), "\n"
+            'Incident Area   ' : request.POST.get('incident_area'), "\n"
+            'Incident Area Detail  ' : request.POST.get('incident_area_detail'), "\n"
+            'Direct Cause  ' : request.POST.get('direct_cause'), "\n"
+            'Root Cause  ' : request.POST.get('root_cause'), "\n"
             
-            'Immediate Action(s)  ' : request.POST.get('imme_action'),
-            'Immediate Action(s) by whom  ' : request.POST.get('imme_action_whom'),
-            'Immediate Action(s) when  ' : request.POST.get('imme_action_when'),
-            'Long Term Action(s)  ' : request.POST.get('long_action'),
-            'Long Term Action(s) by whom  ': request.POST.get('long_action_whom'),
-            'Long Term Action(s) when ' : request.POST.get('long_action_when'),
+            'Immediate Action(s)  ' : request.POST.get('imme_action'), "\n"
+            'Immediate Action(s) by whom  ' : request.POST.get('imme_action_whom'), "\n"
+            'Immediate Action(s) when  ' : request.POST.get('imme_action_when'), "\n"
+            'Long Term Action(s)  ' : request.POST.get('long_action'), "\n"
+            'Long Term Action(s) by whom  ': request.POST.get('long_action_whom'), "\n"
+            'Long Term Action(s) when ' : request.POST.get('long_action_when'), "\n"
             
-            'Second Immediate Action(s)  ' : request.POST.get('imme_action2'),
-            'Second Immediate Action(s) by whom  ' : request.POST.get('imme_action2_whom'),
-            'Second Immediate Action(s) when  ' : request.POST.get('imme_action2_when'),
-            'Second Long Term Action(s)  ' : request.POST.get('long_action2'),
-            'Second Long Term Action(s) by whom  ': request.POST.get('long_action2_whom'),
-            'Second Long Term Action(s) when ' : request.POST.get('long_action2_when'),
+            'Second Immediate Action(s)  ' : request.POST.get('imme_action2'), "\n"
+            'Second Immediate Action(s) by whom  ' : request.POST.get('imme_action2_whom'), "\n"
+            'Second Immediate Action(s) when  ' : request.POST.get('imme_action2_when'), "\n"
+            'Second Long Term Action(s)  ' : request.POST.get('long_action2'), "\n"
+            'Second Long Term Action(s) by whom  ': request.POST.get('long_action2_whom'), "\n"
+            'Second Long Term Action(s) when ' : request.POST.get('long_action2_when'), "\n"
             
-            'Lost Hour in Minutes  ' : request.POST.get('lost_hr'),
-            'Incident Date  ' : request.POST.get('incident_date'),
-            'Incident Time  ' : request.POST.get('incident_time'),
-            'Person(s) Involved  ': request.POST.get('person_involved'),
-            'Incident Description  ' : request.POST.get('incident_description'),
-            'Witness  ' : request.POST.get('witness'),
-            'Material/Equipment Loss  ' : request.POST.get('loss'),
-            'Incident Report to:  ': request.POST.get('reported_to'),
-            'Incident Report on  ' : request.POST.get('date_reported'),
-            'Incident Report Method' : request.POST.get('report_method') ,           
+            'Lost Hour in Minutes  ' : request.POST.get('lost_hr'), "\n"
+            'Incident Date  ' : request.POST.get('incident_date'), "\n"
+            'Incident Time  ' : request.POST.get('incident_time'), "\n"
+            'Person(s) Involved  ': request.POST.get('person_involved'), "\n"
+            'Incident Description  ' : request.POST.get('incident_description'), "\n"
+            'Witness  ' : request.POST.get('witness'), "\n"
+            'Material/Equipment Loss  ' : request.POST.get('loss'), "\n"
+            'Incident Report to:  ': request.POST.get('reported_to'), "\n"
+            'Incident Report on  ' : request.POST.get('date_reported'), "\n"
+            'Incident Report Method' : request.POST.get('report_method') ,  "\n"         
             
-            'Files Attached  ':request.FILES.get('files'),
+            'Files Attached  ':request.FILES.get('files'), "\n"
             'Lesson(s) Learned  ':request.POST.get('lessons'),
             }
             
