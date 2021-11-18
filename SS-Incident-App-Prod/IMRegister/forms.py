@@ -1,4 +1,4 @@
-from django.forms import ModelForm, Textarea,DateInput,ClearableFileInput, TimeInput, CheckboxSelectMultiple, NumberInput, TextInput, RadioSelect
+from django.forms import ModelForm, Textarea,DateInput, FileInput, ClearableFileInput, TimeInput, CheckboxSelectMultiple, NumberInput, TextInput, RadioSelect
 from .models import Incident
 
 
@@ -22,7 +22,9 @@ class IMRegisterForms(ModelForm):
             'reported_to' : TextInput( ),
             'date_reported' :DateInput(attrs={'type':'date'}),
             'incident_area' :Textarea(attrs={'rows':3, 'placeholder': 'e.g DB, Generator area, etc'}),
-            'files' :ClearableFileInput(attrs={'multiple':True}),
+            
+            'files' :FileInput(attrs={'multiple':True}), #ClearableFileInput
+            
             'incident_area_detail' : Textarea(attrs={'rows':3, 'placeholder':"Incident area within the premises"}),
             'direct_cause' : Textarea(attrs={'rows':3,'placeholder':'State incident direct cause'}),
             'root_cause' : Textarea(attrs={'rows':3,'placeholder':'State incident root cause'}),

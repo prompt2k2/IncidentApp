@@ -18,8 +18,9 @@ from .models import Incident
 from django.core.mail import EmailMessage
 import random
 from django.views.generic import View
-
+from .forms import IMRegisterForms
 from IMRegister.resources import render_to_pdf
+from .models import Incident
 
 
 
@@ -69,7 +70,12 @@ def IncidentForm(request):
             date_reported = request.POST.get('date_reported') 
             report_method = request.POST.get('report_method')           
                         
-            files = request.FILES.get('files') 
+            files = request.FILES.getlist('files') 
+            for file in files: 
+                 new_file = Incident(files = file)
+                 
+                 
+                
             lessons = request.POST.get('lessons') 
             
             
@@ -118,7 +124,7 @@ def IncidentForm(request):
                 'date_reported' : date_reported, 
                 'report_method' : request.POST.get('report_method'),#report_method ,           
                         
-                'files':files, 
+                'files':new_file, 
                 'lessons':lessons, 
                 }
             
@@ -127,32 +133,45 @@ def IncidentForm(request):
             
             if pdf: 
                 response = HttpResponse(pdf, content_type='application/pdf')
-                filename = 'New Incident at' + subject 
+                filename = 'New Incident at ' + subject +'.pdf'
                 content = ('attachment; filename=', filename)
-                response['Content-Disposition'] = 'attachment; filename'
-                return response
-            fullmessage = "\n".join(f'{i}:{j}' for i,j in body.items())
+                response['Content-Disposition'] = content
+                #return response
+                
+                fullmessage = "\n".join(f'{i}:{j}' for i,j in body.items())
             
            
             
             
             
-            try:
-                send_mail(subject,
-                          pdf,
-                         
-                      settings.EMAIL_HOST_USER,
-                      ['ppopoola@starsightenergy.com', cc_mail],
-                      fail_silently=False)
-                               
-                form.save()
-                
-                
-                
-            except BadHeaderError:
-                return HttpResponse("Invalid Header found")
-            return HttpResponse(html)
-            #return HttpResponseRedirect("/success/")
+                try:
+                    
+                    email =EmailMessage(
+                        
+                        subject = subject,
+                        body = fullmessage,
+                        from_email = settings.EMAIL_HOST_USER,
+                        to=['ppopoola@starsightenergy.com', cc_mail],
+                        reply_to= [settings.EMAIL_HOST_USER],
+                        headers = {'Message-ID':'Starsight IT Department ensures security of email sent from this application, but receivers are responsible for ensuring correctness and validity'},
+                        
+                        
+                       
+                    )
+                    
+                    email.attach(filename, pdf,  'application/pdf')
+                    #email.attach_file(request.FILES.get('files') )
+                    email.send()
+                    
+                                
+                    form.save()
+                    
+                    
+                    
+                except BadHeaderError:
+                    return HttpResponse("Invalid Header found")
+                return HttpResponse(html)
+                return HttpResponseRedirect("/success/")
                 
             #form.save()
                 

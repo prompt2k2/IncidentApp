@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
 {% load static %}
+{% load crispy_forms_tags %}
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -16,16 +17,18 @@
 </head>
     <body>
         <br>
-        <div>
-        <img class="row-cols-2" src="{% static "images/SSlogo.png" %}" width=60>
-            <h2>You submitted an incident report for {{subject}}</h2>
-            <h3>Your Incident ID: {{ managername }}</h3>
+        <div class="text-center">
+            <img src="C:\Users\IT Manager\DEV\SS-Incident-App-Prod\SS-Incident-App-Prod\static\images\SSlogo.png" alt="Starsight Energy Logo">
+            
+            
+                <h2>You submitted an incident report for {{subject}} {{SiteID}} </h2>
+                
         </div>
 
-    
-        <table border="2" width="90%" cellspacing="3" cellpadding="3" class="table table-bordered border-success">
+    <div background-image=''>
+        <table border="2" width="100%" cellspacing="3" cellpadding="3" class="table table-bordered border-success" >
             <tr>
-                <td width="10%">SiteID </td>
+                <td width="20%">SiteID </td>
                 <td width="30%"> {{SiteID}} </td>
             </tr>
 
@@ -40,7 +43,7 @@
             <tr>
                 <td> Incident Date </td>
                 <td>  {{incident_date }} </td>
-                <td width="10%"> Incident Time   </td>
+                <td width="15%"> Incident Time   </td>
                 <td width="30%">{{incident_time}}  </td>
             </tr>
 
@@ -81,7 +84,7 @@
             </tr>
 
             <tr>
-                <td> Action Taken </td>
+                <th colspan="4"> Action Taken </th>
 
                 <tr>
 
@@ -135,7 +138,9 @@
 
             <th colspan="4"> Incident Pictures </th>
             <tr>
-                <td> Files Attached {{files}} </td>
+                <td> Files Attached</td>
+                
+                <td> <img src="{{files.files.url}}"> </td>
             </tr>
 
             <th colspan="4"> Investigation Team </th>
@@ -145,6 +150,26 @@
                 <td> Job Role</td>
                 <td> {{ job_role}} </td>                
             </tr>
+
+            <th colspan="4"> COMMENTS ON INCIDENT AND EFFECTIVENESS OF CORRECTIVE ACTIONS </th>
+                <tr height='150'>
+                    <td> Supervisor's Comments </td>
+                    <td>  </td>
+                    <td> Supervisor's Name: </td>
+                    <td> Signature and Date</td>                
+                </tr>
+                <tr height='150'>
+                    <td> HSE Manager Comments </td>
+                    <td>  </td>
+                    <td> HSE Manager's Name: </td>
+                    <td> Signature and Date</td>                
+                </tr>
+                <tr height='150'>
+                    <td> CTO's Comments </td>
+                    <td >  </td>
+                    <td> CTO Name: </td>
+                    <td> Signature and Date</td>                
+                </tr>
 
 {% comment %} 
             <tr>
@@ -174,7 +199,7 @@
             </tr> {% endcomment %}
             
         </table>
-    
+    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous">
     </script>
@@ -183,4 +208,12 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous">
     </script>
     </body>
+    <footer>
+        <div class="text-center">
+        <img src="C:\Users\IT Manager\DEV\SS-Incident-App-Prod\SS-Incident-App-Prod\static\images\SSlogo.png" alt="Starsight Energy Logo">
+        
+            <h2>You submitted an incident report for {{subject}} {{SiteID}}</h2>
+            
+        </div>
+    </footer>
 </html>
