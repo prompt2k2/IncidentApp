@@ -51,8 +51,11 @@
                                 {{form.incident_time|as_crispy_field}}
                                 <hr>
                                 <div>
-                                    <label>Upload image</label>
-                                    <input required name="files" type="file" multiple class="form-control-file">   {% comment %} {{form.files}} Attach pictures  {% endcomment %}
+                                    <label>Upload Pictures</label>
+                                    <input required name="file1" type="file" class="form-control-file" > 
+                                    <input required name="file2" type="file" class="form-control-file" > 
+                                    <input required name="file3" type="file" class="form-control-file" > 
+                                    <input required name="file4" type="file" class="form-control-file" >   {% comment %} {{form.files}} Attach pictures  {% endcomment %}
                                 </div>
                             </div>             
                         </div>

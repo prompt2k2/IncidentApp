@@ -16,7 +16,7 @@ from django.template.loader import get_template
 from django.template import Context, loader
 from .models import Incident
 from django.core.mail import EmailMessage
-import random
+import random, imghdr
 from django.views.generic import View
 from .forms import IMRegisterForms
 from IMRegister.resources import render_to_pdf
@@ -70,9 +70,12 @@ def IncidentForm(request):
             date_reported = request.POST.get('date_reported') 
             report_method = request.POST.get('report_method')           
                         
-            files = request.FILES.getlist('files') 
-            for file in files: 
-                 new_file = Incident(files = file)
+            file1 = request.FILES.get('file1') 
+            file2 = request.FILES.get('file2') 
+            file3 = request.FILES.get('file3') 
+            file4 = request.FILES.get('file4') 
+           
+                 
                  
                  
                 
@@ -124,7 +127,11 @@ def IncidentForm(request):
                 'date_reported' : date_reported, 
                 'report_method' : request.POST.get('report_method'),#report_method ,           
                         
-                'files':new_file, 
+                'file1':file1, 
+                'file2':file2, 
+                'file3':file3, 
+                'file4':file4, 
+                
                 'lessons':lessons, 
                 }
             
@@ -159,7 +166,8 @@ def IncidentForm(request):
                        
                     )
                     
-                    email.attach(filename, pdf,  'application/pdf')
+
+                    email.attach(filename, pdf, 'application/pdf')
                     #email.attach_file(request.FILES.get('files') )
                     email.send()
                     

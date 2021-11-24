@@ -37,7 +37,12 @@ class Incident(models.Model):
     
     incident_date = models.DateTimeField(verbose_name='Incident Date', null=True, blank=True)
     incident_time = models.TimeField(verbose_name='Incident Time', null=True, blank=True)
-    files = models.FileField(verbose_name='Attach Pictures', null=True, blank=True)
+    
+    file1 = models.FileField(verbose_name='Attach Pictures', null=True, blank=True)
+    file2 = models.FileField(verbose_name='Attach Pictures', null=True, blank=True)
+    file3 = models.FileField(verbose_name='Attach Pictures', null=True, blank=True)
+    file4 = models.FileField(verbose_name='Attach Pictures', null=True, blank=True)
+    
     person_involved = models.CharField(verbose_name='Person(s) involved in Incident',max_length=220)
     incident_description = models.CharField(verbose_name='Incident Description (Full Details)',max_length=2220)
     witness = models.CharField(verbose_name='Witness (if any)', max_length=220, null=True, blank=True)

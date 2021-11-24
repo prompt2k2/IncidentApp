@@ -19,6 +19,7 @@
         <br>
         <div class="text-center">
             <img src="C:\Users\IT Manager\DEV\SS-Incident-App-Prod\SS-Incident-App-Prod\static\images\SSlogo.png" alt="Starsight Energy Logo">
+            <img src="{% static "images/SSlogo.png" %}" alt="Starsight Energy Logo">
             
             
                 <h2>You submitted an incident report for {{subject}} {{SiteID}} </h2>
@@ -140,7 +141,15 @@
             <tr>
                 <td> Files Attached</td>
                 
-                <td> <img src="{{files.files.url}}"> </td>
+                <td> 
+                    <img src="{% get_media_prefix %}{{file1}}" alt="File 1">
+                    <img src="{% get_media_prefix %}{{file2}}" alt="File 2"> 
+                </td> 
+                
+                <td> 
+                    <img src="{% get_media_prefix %}{{file3}}" alt="File 3"> 
+                    <img src="{% get_media_prefix %}{{file4}}" alt="File 4"> 
+                </td>
             </tr>
 
             <th colspan="4"> Investigation Team </th>
