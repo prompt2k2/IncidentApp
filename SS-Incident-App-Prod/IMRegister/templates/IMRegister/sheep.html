@@ -17,15 +17,15 @@
 </head>
     <body>
         <br>
-        <div class="text-center">
-            <img src="C:\Users\IT Manager\DEV\SS-Incident-App-Prod\SS-Incident-App-Prod\static\images\SSlogo.png" alt="Starsight Energy Logo">
+        <div style="text-align:center">
+            
             <img src="{% static "images/SSlogo.png" %}" alt="Starsight Energy Logo">
             
             
-                <h2>You submitted an incident report for {{subject}} {{SiteID}} </h2>
+            <h2>You submitted an incident report for {{subject}} {{SiteID}} </h2>
                 
         </div>
-
+    <a class="btn btn-danger" href="{% url 'IncidentView' %}">Send Another Report? </a>
     <div background-image=''>
         <table border="2" width="100%" cellspacing="3" cellpadding="3" class="table table-bordered border-success" >
             <tr>
@@ -139,12 +139,18 @@
 
             <th colspan="4"> Incident Pictures </th>
             <tr>
-                <td> Files Attached</td>
+                <td> Pictures Attached</td>
                 
                 <td> 
                     <img src="{% get_media_prefix %}{{file1}}" alt="File 1">
                     <img src="{% get_media_prefix %}{{file2}}" alt="File 2"> 
                 </td> 
+             
+              
+            </tr>
+
+             <tr>
+                <td> </td> 
                 
                 <td> 
                     <img src="{% get_media_prefix %}{{file3}}" alt="File 3"> 
@@ -161,22 +167,22 @@
             </tr>
 
             <th colspan="4"> COMMENTS ON INCIDENT AND EFFECTIVENESS OF CORRECTIVE ACTIONS </th>
-                <tr height='150'>
-                    <td> Supervisor's Comments </td>
+                <tr>
+                    <td style="height:100px"> Supervisor's Comments </td>
                     <td>  </td>
-                    <td> Supervisor's Name: </td>
+                    <td> Supervisor's Name:</td>
                     <td> Signature and Date</td>                
                 </tr>
-                <tr height='150'>
-                    <td> HSE Manager Comments </td>
+                <tr>
+                    <td style="height:100px"> HSE Manager Comments</td>
                     <td>  </td>
                     <td> HSE Manager's Name: </td>
                     <td> Signature and Date</td>                
                 </tr>
-                <tr height='150'>
-                    <td> CTO's Comments </td>
+                <tr>
+                    <td style="height:100px"> CTO's Comments </td>
                     <td >  </td>
-                    <td> CTO Name: </td>
+                    <td> CTO Name:</td>
                     <td> Signature and Date</td>                
                 </tr>
 
@@ -218,10 +224,12 @@
     </script>
     </body>
     <footer>
-        <div class="text-center">
-        <img src="C:\Users\IT Manager\DEV\SS-Incident-App-Prod\SS-Incident-App-Prod\static\images\SSlogo.png" alt="Starsight Energy Logo">
+        <div style="text-align:center;">
+        
         
             <h2>You submitted an incident report for {{subject}} {{SiteID}}</h2>
+
+            <img src="{% static "images/SSlogo.png" %}" alt="Starsight Energy Logo">
             
         </div>
     </footer>
