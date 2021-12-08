@@ -161,7 +161,7 @@ def IncidentForm(request):
                         subject = subject,
                         body = bodymessage,
                         from_email = settings.EMAIL_HOST_USER,
-                        to=['ppopoola@starsightenergy.com', cc_mail],
+                        to=['customerservice@starsightenergy.com', cc_mail],
                         reply_to= [settings.EMAIL_HOST_USER],
                         headers = {'Message-ID':'Starsight IT Department ensures security of email sent from this application, but receivers are responsible for ensuring correctness and validity'},
                         
