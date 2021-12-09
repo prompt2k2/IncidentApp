@@ -90,7 +90,7 @@ WSGI_APPLICATION = 'IncidentApp.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
-
+"""
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -110,7 +110,7 @@ DATABASES = {
         
     }
 }
-"""
+
 SESSION_COOKIE_SECURE = True
 SECURE_HSTS_SECONDS = 3600
 CSRF_COOKIE_SECURE = True
